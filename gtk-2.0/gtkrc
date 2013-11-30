@@ -4,7 +4,17 @@
 # Modified Jul. 2008 for xfce 4.6
 # Modified Feb. 2009 for xfce 4.6
 # Olivier Fourdan <fourdan@xfce.org>
+# Modified Nov. 2013 for xfce 4.12
+# Simon Steinbeiß <simon@xfce.org>
 # Released under the GPL license
+
+gtk-color-scheme	= "bg_color:#eeeeec\nselected_bg_color:#cce2ff\nbase_color:#fcfcfc" # Background, base.
+gtk-color-scheme	= "fg_color:#101010\nselected_fg_color:#000000\ntext_color:#101010" # Foreground, text. 
+gtk-color-scheme	= "tooltip_bg_color:#ffffdf\ntooltip_fg_color:#101010" # Tooltips.
+gtk-color-scheme	= "link_color:#2c82dd" # Hyperlinks
+gtk-color-scheme	= "panel_bg:#686868" # Panel bg color
+gtk-color-scheme	= "fm_color:#F7F7F7" # Color used in Nautilus and Thunar.
+gtk-color-scheme	= "bg_color_dark:#686868\ntext_color_dark:#FFF"
 
 style "default"
 {
@@ -13,14 +23,14 @@ style "default"
     GtkWidget::interior_focus                    = 0
     GtkWidget::internal_padding                  = 0
 
-    GtkButton::child_displacement_x              = 0
+    GtkButton::child_displacement_x              = 1
     GtkButton::child_displacement_y              = 1
     GtkButton::default_border                    = {0, 0, 0, 0}
     GtkButton::default_outside_border            = {0, 0, 0, 0}
     GtkButton::focus-line-pattern                = "\0"
 
-    GtkButtonBox::child_internal_pad_x           = 0
-    GtkButtonBox::child_internal_pad_y           = 0
+    GtkButtonBox::child_internal_pad_x           = 6
+    GtkButtonBox::child_internal_pad_y           = 2
     GtkButtonBox::child_min_heigth               = 0
     GtkButtonBox::child_min_width                = 0
 
@@ -36,12 +46,12 @@ style "default"
     GtkExpander::expander_spacing                = 0
 
     GtkMenuBar::internal-padding                 = 0
-
+    GtkMenuBar::shadow-type                       = GTK_SHADOW_NONE
     GtkMenu::horizontal-padding                  = 0
     GtkMenu::vertical-padding                    = 0
 
     GtkMenuItem::internal_padding                = 2
-    GtkMenuItem::selected_shadow_type            = etched-in
+    GtkMenuItem::selected_shadow_type            = none
 
     GtkOptionMenu::indicator_size                = {0, 0}
     GtkOptionMenu::indicator_spacing             = {0, 0, 0, 0}
@@ -54,21 +64,26 @@ style "default"
     GtkRange::stepper_spacing                    = 0
     GtkRange::stepper_spacing                    = 0
     GtkRange::trough_border                      = 0
-    GtkRange::trough-border                      = 0
 
     GtkScale::trough-side-details                = 1
     GtkScale::value_spacing                      = 0
+    GtkScale::slider-length			 = 15
+    GtkScale::slider-width			 = 15
 
-    GtkScrollbar::has_backward_stepper           = 1
+    GtkScrollbar::has_forward_stepper            = 0
+    GtkScrollbar::has_backward_stepper           = 0
     GtkScrollbar::min_slider_length              = 20
+    GtkScrollbar::slider_width                   = 13
 
+    GtkScrolledWindow::scrollbars-within-bevel	 = 1
     GtkScrolledWindow::scrollbar_spacing         = 0
 
     GtkTextView::focus-line-pattern              = "\0"
 
-    GtkToolbar::internal-padding                 = 0
+    GtkToolbar::internal-padding                 = 2
     GtkToolbar::space-size                       = 10
     GtkTreeView::expander-size                   = 11
+    GtkToolbar::shadow-type                      = GTK_SHADOW_NONE
 
     GtkTreeView::horizontal-separator            = 0
     GtkTreeView::vertical-separator              = 0
@@ -78,29 +93,29 @@ style "default"
     xthickness = 2
     ythickness = 2
 
-    base[ACTIVE]      = "#d9d7d6"
-    base[INSENSITIVE] = "#eeeeec"
-    base[NORMAL]      = "#ffffff"
-    base[PRELIGHT]    = "#eeeeec"
-    base[SELECTED]    = "#bad8ff"
+    base[ACTIVE]      = shade (0.9, @bg_color)
+    base[INSENSITIVE] = @bg_color
+    base[NORMAL]      = @base_color
+    base[PRELIGHT]    = @bg_color
+    base[SELECTED]    = @selected_bg_color
 
-    bg[ACTIVE]        = "#d9d7d6"
-    bg[INSENSITIVE]   = "#eeeeec"
-    bg[NORMAL]        = "#eeeeec"
-    bg[PRELIGHT]      = "#eeeeec"
-    bg[SELECTED]      = "#d9d7d6"
+    bg[ACTIVE]        = shade (0.9, @bg_color)
+    bg[INSENSITIVE]   = @bg_color
+    bg[NORMAL]        = @bg_color
+    bg[PRELIGHT]      = @bg_color
+    bg[SELECTED]      = shade (0.9, @bg_color)
 
-    fg[ACTIVE]        = "#000000"
-    fg[INSENSITIVE]   = "#888a85"
-    fg[NORMAL]        = "#101010"
-    fg[PRELIGHT]      = "#101010"
-    fg[SELECTED]      = "#000000"
+    fg[ACTIVE]        = shade (0.1, @fg_color)
+    fg[INSENSITIVE]   = shade (0.7, @bg_color)
+    fg[NORMAL]        = @fg_color
+    fg[PRELIGHT]      = @fg_color
+    fg[SELECTED]      = shade (0.1, @fg_color)
 
-    text[ACTIVE]      = "#101010"
-    text[INSENSITIVE] = "#101010"
-    text[NORMAL]      = "#101010"
-    text[PRELIGHT]    = "#101010"
-    text[SELECTED]    = "#101010"
+    text[ACTIVE]      = @text_color
+    text[INSENSITIVE] = shade (0.7, @bg_color)
+    text[NORMAL]      = @text_color
+    text[PRELIGHT]    = @text_color
+    text[SELECTED]    = @text_color
 
     engine "xfce"
     {
@@ -130,13 +145,15 @@ style "gradient" = "default"
 
 style "menu" = "gradient"
 {
-    bg[PRELIGHT]      = "#cce2ff"
-    bg[INSENSITIVE]   = "#fafaf7"
-    bg[NORMAL]        = "#fafaf7"
-    fg[ACTIVE]        = "#101010"
-    fg[PRELIGHT]      = "#101010"
-    fg[SELECTED]      = "#101010"
-    text[PRELIGHT]    = "#101010"
+    ythickness = 2
+
+    bg[PRELIGHT]      = @selected_bg_color
+    bg[INSENSITIVE]   = @base_color
+    bg[NORMAL]        = @base_color
+    fg[ACTIVE]        = @fg_color
+    fg[PRELIGHT]      = @fg_color
+    fg[SELECTED]      = @fg_color
+    text[PRELIGHT]    = @text_color
 
     engine "xfce"
     {
@@ -144,9 +161,6 @@ style "menu" = "gradient"
         boxfill
         {
             fill_style = plain
-            orientation = vertical
-            shade_start = 1.10
-            shade_end = 0.90
         }
     }
 }
@@ -162,32 +176,48 @@ style "menuitem" = "menu"
         boxfill
         {
             fill_style = plain
-            orientation = vertical
-            shade_start = 0.90
-            shade_end = 1.10
         }
     }
 }
 
 style "menubar" = "menu"
 {
-    xthickness = 1
-    ythickness = 2
-
-    bg[INSENSITIVE]   = "#eeeeec"
-    bg[NORMAL]        = "#eeeeec"
+    xthickness = 5
+    ythickness = 4
+    
+    bg[INSENSITIVE]   = @bg_color
+    bg[NORMAL]        = @bg_color
 
     engine "xfce"
     {
         smooth_edge = true
         boxfill
         {
-            fill_style = gradient
-            orientation = vertical
-            shade_start = 1.00
-            shade_end = 0.90
+            fill_style = plain
         }
     }
+}
+
+style "toolbar" = "menubar"
+{
+    xthickness = 0
+    ythickness = 0
+
+    bg[NORMAL]        = shade(0.9, @bg_color)
+
+    engine "xfce"
+    {
+        smooth_edge = true
+        boxfill
+        {
+            fill_style = plain
+        }
+    }
+}
+
+style "sidebar" = "toolbar"
+{
+    base[NORMAL]      = shade(1.05, mix(0.2, @selected_bg_color, @bg_color))
 }
 
 style "pager" = "gradient"
@@ -195,8 +225,8 @@ style "pager" = "gradient"
     xthickness = 0
     ythickness = 0
 
-    bg[SELECTED]      = "#5e98e3"
-    fg[SELECTED]      = "#ffffff"
+    bg[SELECTED]      = shade(0.8, @selected_bg_color)
+    fg[SELECTED]      = @base_color
 
     engine "xfce"
     {
@@ -206,64 +236,66 @@ style "pager" = "gradient"
 
 style "button" = "default"
 {
-    bg[ACTIVE]        = "#d9d7d6"
-    bg[NORMAL]        = "#eeeeec"
-    bg[PRELIGHT]      = "#cce2ff"
-    bg[SELECTED]      = "#4e627d"
+    xthickness = 2
+    ythickness = 2
 
-    fg[ACTIVE]        = "#000000"
-    fg[SELECTED]      = "#ffffff"
+    bg[ACTIVE]        = shade (0.9, @bg_color)
+    bg[NORMAL]        = @bg_color
+    bg[PRELIGHT]      = shade (0.9, @bg_color)
+    bg[SELECTED]      = shade (0.9, @selected_bg_color)
+
+    fg[ACTIVE]        = shade (0.1, @fg_color)
+    fg[SELECTED]      = @base_color
 
     engine "xfce"
     {
         smooth_edge = true
         grip_style = none
-        boxfill
-        {
-            fill_style = gradient
-            orientation = vertical
-            shade_start = 1.10
-            shade_end = 0.90
-        }
     }
 }
 
 style "notebook" = "default"
 {
-    xthickness = 1
-    ythickness = 1
+    xthickness = 4
+    ythickness = 2
 
-    bg[ACTIVE]        = "#e8e8e6"
-    bg[NORMAL]        = "#ffffff"
-    fg[NORMAL]        = "#101010"
+    bg[ACTIVE]        = @bg_color
+    bg[NORMAL]        = @base_color
+    fg[ACTIVE]        = shade (0.55, @bg_color)
+    fg[NORMAL]        = @fg_color
+}
+
+style "notebook-labels" = "notebook"
+{
+    xthickness = 3
+    ythickness = 2
 }
 
 style "scrollbar" = "default"
 {
-    bg[ACTIVE]        = "#e8e8e6"
-    bg[NORMAL]        = "#d9d7d6"
-    bg[PRELIGHT]      = "#cce2ff"
+    xthickness = 0
+    ythickness = 0
+
+    bg[ACTIVE]        = @bg_color
+    bg[NORMAL]        = shade (0.8, @bg_color)
+    bg[PRELIGHT]      = shade (0.67, @bg_color)
 
     engine "xfce"
     {
         smooth_edge = true
-        grip_style = handle
-        boxfill
-        {
-            fill_style = gradient
-            orientation = automatic
-            shade_start = 1.10
-            shade_end = 0.90
-        }
+        grip_style = none
     }
 }
 
 style "scale" = "scrollbar"
 {
+    xthickness = 2
+    ythickness = 2
+
     engine "xfce"
     {
         smooth_edge = true
-        grip_style = none
+        grip_style = slide
         boxfill
         {
             fill_style = gradient
@@ -276,14 +308,14 @@ style "scale" = "scrollbar"
 
 style "progress" = "gradient"
 {
-    xthickness = 0
-    ythickness = 0
+    xthickness = 1
+    ythickness = 1
 
-    bg[ACTIVE]        = "#d9d7d6"
-    bg[NORMAL]        = "#e8e8e6"
-    bg[PRELIGHT]      = "#cce2ff"
+    bg[ACTIVE]        = shade (0.9, @bg_color)
+    bg[NORMAL]        = @bg_color
+    bg[PRELIGHT]      = @selected_bg_color
 
-    fg[PRELIGHT]      = "#4e9a06"
+    fg[PRELIGHT]      = @selected_fg_color
 
     engine "xfce"
     {
@@ -293,8 +325,8 @@ style "progress" = "gradient"
         {
             fill_style = gradient
             orientation = automatic
-            shade_start = 1.10
-            shade_end = 0.90
+            shade_start = 1.00
+            shade_end = 0.95
         }
     }
 }
@@ -314,22 +346,22 @@ style "handlebox" = "default"
 
 style "tooltips" = "default"
 {
-    bg[NORMAL] = "#ffffdf"
-    fg[NORMAL] = "#101010"
+    bg[NORMAL] = @tooltip_bg_color
+    fg[NORMAL] = @tooltip_fg_color
 }
 
 style "rox" = "default"
 {
-    bg[ACTIVE] = "#ffffff"
-    bg[NORMAL] = "#ffffff"
+    bg[ACTIVE] = @base_color
+    bg[NORMAL] = @base_color
 }
 
 style "titlebar" = "default"
 {
-    bg[SELECTED]      = "#1a2738"
-    fg[SELECTED]      = "#ffffff"
-    bg[INSENSITIVE]   = "#eeeeec"
-    fg[INSENSITIVE]   = "#888a85"
+    bg[SELECTED]      = shade (0.3, @selected_bg_color)
+    fg[SELECTED]      = @base_color
+    bg[INSENSITIVE]   = @bg_color
+    fg[INSENSITIVE]   = shade (0.7, @bg_color)
 }
 
 
@@ -358,8 +390,9 @@ class "*MenuItem*"                 style "menuitem"
 
 widget_class "*BonoboDockItem"     style "menubar"
 class "*BonoboDockItem"            style "menubar"
-widget_class "*ToolBar"            style "menubar"
-class "*ToolBar"                   style "menubar"
+widget_class "*ToolBar"            style "toolbar"
+class "*ToolBar"                   style "toolbar"
+class "*GtkToolbar"                style "toolbar"
 widget_class "*MenuBar*"           style "menubar"
 class "*MenuBar*"                  style "menubar"
 
@@ -374,6 +407,7 @@ class "*OptionMenu*"               style "button"
 
 widget_class "*.GtkNotebook"       style "notebook"
 class "*.GtkNotebook"              style "notebook"
+widget_class "*.GtkNotebook*GtkLabel"    style "notebook-labels"
 
 widget_class "*GtkVScrollbar*"     style "scrollbar"
 class "*GtkVScrollbar*"            style "scrollbar"
@@ -391,6 +425,9 @@ class "*GtkProgress*"              style "progress"
 widget "gtk-tooltip*"              style "tooltips"
 
 widget_class "*.Collection"        style "rox"
+
+widget_class "*ThunarShortcutsView*"		style "sidebar"
+widget_class "*ThunarTreeView*"			style "sidebar"
 
 widget "xfwm"                      style "titlebar"
 widget "xfwm4-tabwin*"             style "titlebar"
