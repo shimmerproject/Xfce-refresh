@@ -22,6 +22,9 @@ style "default"
     GtkWidget::focus_padding                     = 0
     GtkWidget::interior_focus                    = 0
     GtkWidget::internal_padding                  = 0
+    GtkWidget::link-color                        = @link_color
+
+    GtkArrow::arrow-scaling                      = 0.5
 
     GtkButton::child_displacement_x              = 1
     GtkButton::child_displacement_y              = 1
@@ -46,15 +49,15 @@ style "default"
     GtkExpander::expander_spacing                = 0
 
     GtkMenuBar::internal-padding                 = 0
-    GtkMenuBar::shadow-type                       = GTK_SHADOW_NONE
+    GtkMenuBar::shadow-type                      = GTK_SHADOW_NONE
     GtkMenu::horizontal-padding                  = 0
     GtkMenu::vertical-padding                    = 0
 
     GtkMenuItem::internal_padding                = 2
     GtkMenuItem::selected_shadow_type            = none
 
-    GtkOptionMenu::indicator_size                = {0, 0}
-    GtkOptionMenu::indicator_spacing             = {0, 0, 0, 0}
+    GtkOptionMenu::indicator_size                = {5, 5}
+    GtkOptionMenu::indicator_spacing             = {3, 3, 3, 3}
 
     GtkPaned::handle_full_size                   = 1
     GtkPaned::handle_size                        = 3
@@ -73,10 +76,12 @@ style "default"
     GtkScrollbar::has_forward_stepper            = 0
     GtkScrollbar::has_backward_stepper           = 0
     GtkScrollbar::min_slider_length              = 20
-    GtkScrollbar::slider_width                   = 13
+    GtkScrollbar::slider_width                   = 12
 
     GtkScrolledWindow::scrollbars-within-bevel	 = 1
     GtkScrolledWindow::scrollbar_spacing         = 0
+    
+    GtkStatusbar::shadow-type                    = GTK_SHADOW_NONE
 
     GtkTextView::focus-line-pattern              = "\0"
 
@@ -120,6 +125,7 @@ style "default"
     engine "xfce"
     {
         smooth_edge = true
+        grip_style = none
         boxfill
         {
             fill_style = plain
@@ -143,7 +149,7 @@ style "gradient" = "default"
     }
 }
 
-style "menu" = "gradient"
+style "menu" = "default"
 {
     ythickness = 2
 
@@ -154,15 +160,6 @@ style "menu" = "gradient"
     fg[PRELIGHT]      = @fg_color
     fg[SELECTED]      = @fg_color
     text[PRELIGHT]    = @text_color
-
-    engine "xfce"
-    {
-        smooth_edge = true
-        boxfill
-        {
-            fill_style = plain
-        }
-    }
 }
 
 style "menuitem" = "menu"
@@ -306,7 +303,7 @@ style "scale" = "scrollbar"
     }
 }
 
-style "progress" = "gradient"
+style "progress" = "default"
 {
     xthickness = 1
     ythickness = 1
