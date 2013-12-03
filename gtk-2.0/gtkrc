@@ -56,6 +56,8 @@ style "default"
     GtkMenuItem::internal_padding                = 2
     GtkMenuItem::selected_shadow_type            = etched-in
 
+    GtkNotebook::tab-overlap                     = -1
+
     GtkOptionMenu::indicator_size                = {5, 5}
     GtkOptionMenu::indicator_spacing             = {3, 3, 3, 3}
 
@@ -294,7 +296,7 @@ style "treeview-header" = "default"
 
 style "notebook" = "default"
 {
-    xthickness = 4
+    xthickness = 2
     ythickness = 2
 
     bg[ACTIVE]        = @bg_color
@@ -302,8 +304,6 @@ style "notebook" = "default"
     fg[ACTIVE]        = shade (0.55, @bg_color)
     fg[NORMAL]        = @fg_color
 }
-
-## FIXME: only apply xthickness to notebook-labels
 
 style "scrollbar" = "default"
 {
@@ -360,7 +360,7 @@ style "progress" = "default"
             fill_style = gradient
             orientation = automatic
             shade_start = 1.00
-            shade_end = 0.95            
+            shade_end = 0.95
         }
     }
 }
@@ -442,6 +442,7 @@ class "*OptionMenu*"               style "button"
 
 widget_class "*.GtkNotebook"       style "notebook"
 class "*.GtkNotebook"              style "notebook"
+widget_class "*.GtkNotebook*GtkLabel" style "notebook"
 
 widget_class "*GtkVScrollbar*"     style "scrollbar"
 class "*GtkVScrollbar*"            style "scrollbar"
@@ -460,10 +461,9 @@ widget "gtk-tooltip*"              style "tooltips"
 
 widget_class "*.Collection"        style "rox"
 
-widget_class "*<GtkRadioButton>*"		style "radiocheck"
-widget_class "*<GtkCheckButton>*"		style "radiocheck"
+widget_class "*<GtkRadioButton>*"    style "radiocheck"
+widget_class "*<GtkCheckButton>*"    style "radiocheck"
 
-# Treeview header
 widget_class "*.<GtkTreeView>.<GtkButton>"      style "treeview-header"
 widget_class "*.<GtkCTree>.<GtkButton>"         style "treeview-header"
 widget_class "*.<GtkList>.<GtkButton>"          style "treeview-header"
