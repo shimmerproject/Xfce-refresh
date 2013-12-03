@@ -8,10 +8,10 @@
 # Simon Steinbeiß <simon@xfce.org>
 # Released under the GPL license
 
-gtk-color-scheme	= "bg_color:#eeeeec\nselected_bg_color:#cce2ff\nbase_color:#fcfcfc" # Background, base.
-gtk-color-scheme	= "fg_color:#101010\nselected_fg_color:#000000\ntext_color:#101010" # Foreground, text. 
-gtk-color-scheme	= "tooltip_bg_color:#ffffdf\ntooltip_fg_color:#101010" # Tooltips.
-gtk-color-scheme	= "link_color:#2c82dd" # Hyperlinks
+gtk-color-scheme	= "bg_color:#d9dadb\nselected_bg_color:#8fafdb\nbase_color:#fcfcfc" # Background, base.
+gtk-color-scheme	= "fg_color:#2D2D2D\nselected_fg_color:#000000\ntext_color:#2D2D2D" # Foreground, text. 
+gtk-color-scheme	= "tooltip_bg_color:#ffffdf\ntooltip_fg_color:#2D2D2D" # Tooltips.
+gtk-color-scheme	= "link_color:#8fafdb" # Hyperlinks
 gtk-color-scheme	= "panel_bg:#686868" # Panel bg color
 gtk-color-scheme	= "fm_color:#F7F7F7" # Color used in Nautilus and Thunar.
 gtk-color-scheme	= "bg_color_dark:#686868\ntext_color_dark:#FFF"
@@ -30,7 +30,7 @@ style "default"
     GtkButton::child_displacement_y              = 1
     GtkButton::default_border                    = {0, 0, 0, 0}
     GtkButton::default_outside_border            = {0, 0, 0, 0}
-    GtkButton::focus-line-pattern                = "\0"
+    GtkButton::focus-line-pattern                = "\1\1"
 
     GtkButtonBox::child_internal_pad_x           = 6
     GtkButtonBox::child_internal_pad_y           = 2
@@ -40,7 +40,7 @@ style "default"
     GtkCheckButton::indicator_size               = 12
     GtkCheckButton::focus-line-pattern           = "\1\1"
 
-    GtkEntry::focus-line-pattern                 = "\0"
+    GtkEntry::focus-line-pattern                 = "\1\1"
 
     GtkRadioButton::indicator_size               = 12
     GtkRadioButton::focus-line-pattern           = "\1\1"
@@ -54,7 +54,7 @@ style "default"
     GtkMenu::vertical-padding                    = 0
 
     GtkMenuItem::internal_padding                = 2
-    GtkMenuItem::selected_shadow_type            = none
+    GtkMenuItem::selected_shadow_type            = etched-in
 
     GtkOptionMenu::indicator_size                = {5, 5}
     GtkOptionMenu::indicator_spacing             = {3, 3, 3, 3}
@@ -62,16 +62,16 @@ style "default"
     GtkPaned::handle_full_size                   = 1
     GtkPaned::handle_size                        = 3
 
-    GtkRange::slider_width                       = 15
-    GtkRange::stepper_size                       = 15
+    GtkRange::slider_width                       = 13
+    GtkRange::stepper_size                       = 13
     GtkRange::stepper_spacing                    = 0
     GtkRange::stepper_spacing                    = 0
     GtkRange::trough_border                      = 0
 
     GtkScale::trough-side-details                = 1
     GtkScale::value_spacing                      = 0
-    GtkScale::slider-length			 = 15
-    GtkScale::slider-width			 = 15
+    GtkScale::slider-length			 = 13
+    GtkScale::slider-width			 = 13
 
     GtkScrollbar::has_forward_stepper            = 0
     GtkScrollbar::has_backward_stepper           = 0
@@ -87,9 +87,9 @@ style "default"
 
     GtkToolbar::internal-padding                 = 2
     GtkToolbar::space-size                       = 10
-    GtkTreeView::expander-size                   = 11
     GtkToolbar::shadow-type                      = GTK_SHADOW_NONE
 
+    GtkTreeView::expander-size                   = 11
     GtkTreeView::horizontal-separator            = 0
     GtkTreeView::vertical-separator              = 0
 
@@ -110,17 +110,17 @@ style "default"
     bg[PRELIGHT]      = @bg_color
     bg[SELECTED]      = shade (0.9, @bg_color)
 
-    fg[ACTIVE]        = shade (0.1, @fg_color)
+    fg[ACTIVE]        = shade (0.7, @fg_color)
     fg[INSENSITIVE]   = shade (0.7, @bg_color)
     fg[NORMAL]        = @fg_color
     fg[PRELIGHT]      = @fg_color
-    fg[SELECTED]      = shade (0.1, @fg_color)
+    fg[SELECTED]      = shade (0.7, @fg_color)
 
     text[ACTIVE]      = @text_color
     text[INSENSITIVE] = shade (0.7, @bg_color)
     text[NORMAL]      = @text_color
     text[PRELIGHT]    = @text_color
-    text[SELECTED]    = @text_color
+    text[SELECTED]    = shade (0.7, @text_color)
 
     engine "xfce"
     {
@@ -151,6 +151,7 @@ style "gradient" = "default"
 
 style "menu" = "default"
 {
+    xthickness = 0
     ythickness = 2
 
     bg[PRELIGHT]      = @selected_bg_color
@@ -173,6 +174,9 @@ style "menuitem" = "menu"
         boxfill
         {
             fill_style = plain
+            orientation = vertical
+            shade_start = 0.90
+            shade_end = 1.10
         }
     }
 }
@@ -181,6 +185,7 @@ style "menubar" = "menu"
 {
     xthickness = 5
     ythickness = 4
+    GtkMenuItem::selected_shadow_type            = none
     
     bg[INSENSITIVE]   = @bg_color
     bg[NORMAL]        = @bg_color
@@ -248,7 +253,37 @@ style "button" = "default"
     {
         smooth_edge = true
         grip_style = none
+        boxfill
+        {
+            fill_style = gradient
+            orientation = vertical
+            shade_start = 1.03
+            shade_end = 0.95
+        }
     }
+}
+
+style "treeview-header" = "default"
+{
+    xthickness = 2
+    ythickness = 2
+
+    bg[NORMAL]        = shade (1.15, @bg_color)
+    bg[PRELIGHT]      = shade (1.05, @bg_color)
+
+## FIXME: gradient doesn't get applied for some reason
+#    engine "xfce"
+#    {
+#        smooth_edge = false
+#        grip_style = none
+#        boxfill
+#        {
+#            fill_style = gradient
+#            orientation = vertical
+#            shade_start = 0.95
+#            shade_end = 1.15
+#        }
+#    }
 }
 
 style "notebook" = "default"
@@ -257,7 +292,7 @@ style "notebook" = "default"
     ythickness = 2
 
     bg[ACTIVE]        = @bg_color
-    bg[NORMAL]        = @base_color
+    bg[NORMAL]        = shade (1.07, @bg_color)
     fg[ACTIVE]        = shade (0.55, @bg_color)
     fg[NORMAL]        = @fg_color
 }
@@ -273,7 +308,7 @@ style "scrollbar" = "default"
     xthickness = 0
     ythickness = 0
 
-    bg[ACTIVE]        = @bg_color
+    bg[ACTIVE]        = shade (1.1, @bg_color)
     bg[NORMAL]        = shade (0.8, @bg_color)
     bg[PRELIGHT]      = shade (0.67, @bg_color)
 
@@ -286,16 +321,16 @@ style "scrollbar" = "default"
 
 style "scale" = "scrollbar"
 {
-    xthickness = 2
-    ythickness = 2
+    xthickness = 0
+    ythickness = 0
 
     engine "xfce"
     {
         smooth_edge = true
-        grip_style = slide
+        grip_style = none
         boxfill
         {
-            fill_style = gradient
+            fill_style = plain
             orientation = automatic
             shade_start = 1.10
             shade_end = 0.90
@@ -305,11 +340,11 @@ style "scale" = "scrollbar"
 
 style "progress" = "default"
 {
-    xthickness = 1
-    ythickness = 1
+    xthickness = 0
+    ythickness = 0
 
     bg[ACTIVE]        = shade (0.9, @bg_color)
-    bg[NORMAL]        = @bg_color
+    bg[NORMAL]        = shade (0.98, @base_color)
     bg[PRELIGHT]      = @selected_bg_color
 
     fg[PRELIGHT]      = @selected_fg_color
@@ -323,7 +358,7 @@ style "progress" = "default"
             fill_style = gradient
             orientation = automatic
             shade_start = 1.00
-            shade_end = 0.95
+            shade_end = 0.95            
         }
     }
 }
@@ -343,6 +378,8 @@ style "handlebox" = "default"
 
 style "tooltips" = "default"
 {
+    xthickness = 8
+    ythickness = 5
     bg[NORMAL] = @tooltip_bg_color
     fg[NORMAL] = @tooltip_fg_color
 }
@@ -360,7 +397,6 @@ style "titlebar" = "default"
     bg[INSENSITIVE]   = @bg_color
     fg[INSENSITIVE]   = shade (0.7, @bg_color)
 }
-
 
 widget_class "*"                   style "default"
 
@@ -423,8 +459,16 @@ widget "gtk-tooltip*"              style "tooltips"
 
 widget_class "*.Collection"        style "rox"
 
+# Treeview header
+widget_class "*.<GtkTreeView>.<GtkButton>"      style "treeview-header"
+widget_class "*.<GtkCTree>.<GtkButton>"         style "treeview-header"
+widget_class "*.<GtkList>.<GtkButton>"          style "treeview-header"
+widget_class "*.<GtkCList>.<GtkButton>"         style "treeview-header"
+widget_class "*GnmSimpleCanvas*"                style "treeview-header" # Gnumeric treeview-headers
+
 widget_class "*ThunarShortcutsView*"		style "sidebar"
 widget_class "*ThunarTreeView*"			style "sidebar"
+widget_class "*GtkFileChooserWidget.GtkFileChooserDefault.GtkVBox.GtkHPaned.GtkVBox.GtkScrolledWindow.GtkTreeView*"   style "sidepane"
 
 widget "xfwm"                      style "titlebar"
 widget "xfwm4-tabwin*"             style "titlebar"
