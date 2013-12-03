@@ -70,7 +70,7 @@ style "default"
     GtkRange::stepper_spacing                    = 0
     GtkRange::trough_border                      = 0
 
-    GtkScale::trough-side-details                = 1
+    GtkScale::trough-side-details                = 0
     GtkScale::value_spacing                      = 0
     GtkScale::slider-length			 = 13
     GtkScale::slider-width			 = 13
@@ -273,25 +273,11 @@ style "radiocheck" = "default"
 
 style "treeview-header" = "default"
 {
-    xthickness = 2
-    ythickness = 2
+    xthickness = 1
+    ythickness = 1
 
     bg[NORMAL]        = shade (1.15, @bg_color)
-    bg[PRELIGHT]      = shade (1.05, @bg_color)
-
-## FIXME: gradient doesn't get applied for some reason
-#    engine "xfce"
-#    {
-#        smooth_edge = false
-#        grip_style = none
-#        boxfill
-#        {
-#            fill_style = gradient
-#            orientation = vertical
-#            shade_start = 0.95
-#            shade_end = 1.15
-#        }
-#    }
+    bg[PRELIGHT]      = shade (1.10, @bg_color)
 }
 
 style "notebook" = "default"
@@ -333,9 +319,6 @@ style "scale" = "scrollbar"
         boxfill
         {
             fill_style = plain
-            orientation = automatic
-            shade_start = 1.10
-            shade_end = 0.90
         }
     }
 }
@@ -472,7 +455,8 @@ widget_class "*GnmSimpleCanvas*"                style "treeview-header" # Gnumer
 
 widget_class "*ThunarShortcutsView*"		style "sidebar"
 widget_class "*ThunarTreeView*"			style "sidebar"
-widget_class "*GtkFileChooserWidget.GtkFileChooserDefault.GtkVBox.GtkHPaned.GtkVBox.GtkScrolledWindow.GtkTreeView*"   style "sidepane"
+widget_class "*GtkFileChooserWidget.GtkFileChooserDefault.GtkVBox.GtkHPaned.GtkVBox.GtkScrolledWindow.GtkTreeView*"   style "sidebar"
+widget_class "*GtkFileChooserWidget.GtkFileChooserDefault.GtkVBox.GtkHPaned.GtkVBox.GtkScrolledWindow.<GtkTreeView>.<GtkButton>"	style "treeview-header"
 
 widget "xfwm"                      style "titlebar"
 widget "xfwm4-tabwin*"             style "titlebar"
