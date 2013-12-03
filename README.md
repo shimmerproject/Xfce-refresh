@@ -1,4 +1,4 @@
 Xfce-refresh
 ============
 
-Refresh of Xfce's gtk-theme (possibly for 4.12)
+Refresh of Xfce's default gtk-theme
