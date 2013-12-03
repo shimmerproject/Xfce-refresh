@@ -151,7 +151,7 @@ style "gradient" = "default"
 
 style "menu" = "default"
 {
-    xthickness = 0
+    xthickness = 1
     ythickness = 2
 
     bg[PRELIGHT]      = @selected_bg_color
