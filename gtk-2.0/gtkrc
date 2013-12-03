@@ -265,6 +265,7 @@ style "button" = "default"
 
 style "radiocheck" = "default"
 {
+    base[PRELIGHT]      = @base_color
     bg[PRELIGHT]	= shade (1.02, @bg_color)
 }
 
