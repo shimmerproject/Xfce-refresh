@@ -101,7 +101,7 @@ style "default"
     base[ACTIVE]      = shade (0.9, @bg_color)
     base[INSENSITIVE] = @bg_color
     base[NORMAL]      = @base_color
-    base[PRELIGHT]    = @bg_color
+    base[PRELIGHT]    = shade (0.9, @base_color)
     base[SELECTED]    = @selected_bg_color
 
     bg[ACTIVE]        = shade (0.9, @bg_color)
@@ -263,6 +263,11 @@ style "button" = "default"
     }
 }
 
+style "radiocheck" = "default"
+{
+    bg[PRELIGHT]	= shade (1.02, @bg_color)
+}
+
 style "treeview-header" = "default"
 {
     xthickness = 2
@@ -297,11 +302,7 @@ style "notebook" = "default"
     fg[NORMAL]        = @fg_color
 }
 
-style "notebook-labels" = "notebook"
-{
-    xthickness = 3
-    ythickness = 2
-}
+## FIXME: only apply xthickness to notebook-labels
 
 style "scrollbar" = "default"
 {
@@ -440,7 +441,6 @@ class "*OptionMenu*"               style "button"
 
 widget_class "*.GtkNotebook"       style "notebook"
 class "*.GtkNotebook"              style "notebook"
-widget_class "*.GtkNotebook*GtkLabel"    style "notebook-labels"
 
 widget_class "*GtkVScrollbar*"     style "scrollbar"
 class "*GtkVScrollbar*"            style "scrollbar"
@@ -458,6 +458,9 @@ class "*GtkProgress*"              style "progress"
 widget "gtk-tooltip*"              style "tooltips"
 
 widget_class "*.Collection"        style "rox"
+
+widget_class "*<GtkRadioButton>*"		style "radiocheck"
+widget_class "*<GtkCheckButton>*"		style "radiocheck"
 
 # Treeview header
 widget_class "*.<GtkTreeView>.<GtkButton>"      style "treeview-header"
