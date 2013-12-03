@@ -219,7 +219,7 @@ style "toolbar" = "menubar"
 
 style "sidebar" = "toolbar"
 {
-    base[NORMAL]      = shade(1.05, mix(0.2, @selected_bg_color, @bg_color))
+    base[NORMAL]      = shade(1.15, mix(0.2, @selected_bg_color, @bg_color))
 }
 
 style "pager" = "gradient"
