@@ -30,7 +30,7 @@ style "default"
     GtkButton::child_displacement_y              = 1
     GtkButton::default_border                    = {0, 0, 0, 0}
     GtkButton::default_outside_border            = {0, 0, 0, 0}
-    GtkButton::focus-line-pattern                = "\1\1"
+    GtkButton::focus-line-pattern                = "\0"
 
     GtkButtonBox::child_internal_pad_x           = 6
     GtkButtonBox::child_internal_pad_y           = 2
@@ -40,7 +40,7 @@ style "default"
     GtkCheckButton::indicator_size               = 12
     GtkCheckButton::focus-line-pattern           = "\1\1"
 
-    GtkEntry::focus-line-pattern                 = "\1\1"
+    GtkEntry::focus-line-pattern                 = "\0"
 
     GtkRadioButton::indicator_size               = 12
     GtkRadioButton::focus-line-pattern           = "\1\1"
