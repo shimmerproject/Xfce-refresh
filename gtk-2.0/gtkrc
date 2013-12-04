@@ -12,7 +12,7 @@ gtk-color-scheme	= "bg_color:#d9dadb\nselected_bg_color:#8fafdb\nbase_color:#fcf
 gtk-color-scheme	= "fg_color:#2D2D2D\nselected_fg_color:#000000\ntext_color:#2D2D2D" # Foreground, text. 
 gtk-color-scheme	= "tooltip_bg_color:#ffffdf\ntooltip_fg_color:#2D2D2D" # Tooltips.
 gtk-color-scheme	= "link_color:#8fafdb" # Hyperlinks
-gtk-color-scheme	= "panel_bg:#686868" # Panel bg color
+gtk-color-scheme	= "panel_bg:#252525" # Panel bg color
 gtk-color-scheme	= "fm_color:#F7F7F7" # Color used in Nautilus and Thunar.
 gtk-color-scheme	= "bg_color_dark:#686868\ntext_color_dark:#FFF"
 
@@ -77,7 +77,7 @@ style "default"
 
     GtkScrollbar::has_forward_stepper            = 0
     GtkScrollbar::has_backward_stepper           = 0
-    GtkScrollbar::min_slider_length              = 20
+    GtkScrollbar::min_slider_length              = 25
     GtkScrollbar::slider_width                   = 12
     GtkScrollbar::trough-side-details            = 1
 
@@ -376,6 +376,27 @@ style "rox" = "default"
     bg[NORMAL] = @base_color
 }
 
+style "panel" = "default"
+{
+    xthickness = 1
+    ythickness = 1
+    
+    bg[ACTIVE]        = shade (1.6, @panel_bg)
+    bg[NORMAL]        = @panel_bg
+    bg[PRELIGHT]      = mix (0.8, shade (1.2, @panel_bg), @selected_bg_color)
+    bg[SELECTED]      = shade (1.6, @panel_bg)
+
+    fg[ACTIVE]        = @base_color
+    fg[NORMAL]        = @base_color
+    fg[PRELIGHT]      = @base_color
+    fg[SELECTED]      = @base_color
+
+    text[ACTIVE]      = @base_color
+    text[NORMAL]      = @base_color
+    text[PRELIGHT]    = @base_color
+    text[SELECTED]    = @base_color
+}
+
 style "titlebar" = "default"
 {
     bg[SELECTED]      = shade (0.3, @selected_bg_color)
@@ -463,3 +484,5 @@ widget "xfwm"                      style "titlebar"
 widget "xfwm4-tabwin*"             style "titlebar"
 class "MetaFrames"                 style "titlebar"
 widget_class "MetaFrames"          style "titlebar"
+
+widget "*Xfce*Panel*"			style "panel"
