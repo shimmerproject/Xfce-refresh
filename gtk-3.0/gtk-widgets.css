@@ -3147,9 +3147,9 @@ GtkColorButton.button {
 .tooltip {
     border-width: 1px;
     border-style: solid;
-    border-color: alpha(@theme_tooltip_bg_color, 0.9);
-    border-radius: 3px;
-    background-color: alpha(@theme_tooltip_bg_color, 0.9);
+    border-color: @theme_tooltip_fg_color;
+    border-radius: 0px;
+    background-color: @theme_tooltip_bg_color;
     background-image: none;
     color: @theme_tooltip_fg_color;
 }
