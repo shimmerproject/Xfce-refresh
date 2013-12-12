@@ -78,7 +78,7 @@ style "default"
     GtkScrollbar::has_forward_stepper            = 0
     GtkScrollbar::has_backward_stepper           = 0
     GtkScrollbar::min_slider_length              = 25
-    GtkScrollbar::slider_width                   = 12
+    GtkScrollbar::slider_width                   = 11
     GtkScrollbar::trough-side-details            = 1
 
     GtkScrolledWindow::scrollbars-within-bevel	 = 1
@@ -399,6 +399,13 @@ style "panel" = "default"
 
 style "titlebar" = "default"
 {
+    Xfwm4TabwinWidget::border-width = 1
+    Xfwm4TabwinWidget::border-alpha = 0.6
+    Xfwm4TabwinWidget::icon-size = 64
+    Xfwm4TabwinWidget::listview-icon-size = 16
+    Xfwm4TabwinWidget::alpha = 0.8
+    Xfwm4TabwinWidget::radius = 10
+
     bg[SELECTED]      = shade (0.3, @selected_bg_color)
     fg[SELECTED]      = @base_color
     bg[INSENSITIVE]   = @bg_color
