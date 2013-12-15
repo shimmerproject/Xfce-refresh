@@ -70,7 +70,7 @@ style "default"
     GtkRange::stepper_spacing                    = 0
     GtkRange::trough_border                      = 0
 
-    GtkScale::trough-side-details                = 0
+    GtkScale::trough-side-details                = 1
     GtkScale::value_spacing                      = 0
     GtkScale::slider-length			 = 13
     GtkScale::slider-width			 = 13
@@ -79,7 +79,6 @@ style "default"
     GtkScrollbar::has_backward_stepper           = 0
     GtkScrollbar::min_slider_length              = 25
     GtkScrollbar::slider_width                   = 11
-    GtkScrollbar::trough-side-details            = 1
 
     GtkScrolledWindow::scrollbars-within-bevel	 = 1
     GtkScrolledWindow::scrollbar_spacing         = 0
@@ -129,6 +128,7 @@ style "default"
     {
         smooth_edge = true
         grip_style = none
+        flat_border = true
         boxfill
         {
             fill_style = plain
@@ -241,11 +241,11 @@ style "pager" = "gradient"
 
 style "button" = "default"
 {
-    xthickness = 2
+    xthickness = 3
     ythickness = 2
 
     bg[ACTIVE]        = shade (0.9, @bg_color)
-    bg[NORMAL]        = @bg_color
+    bg[NORMAL]        = shade (1.1, @bg_color)
     bg[PRELIGHT]      = shade (0.9, @bg_color)
     bg[SELECTED]      = shade (0.9, @selected_bg_color)
 
@@ -254,14 +254,12 @@ style "button" = "default"
 
     engine "xfce"
     {
-        smooth_edge = true
+        flat_border = true
+        smooth_edge = false
         grip_style = none
         boxfill
         {
-            fill_style = gradient
-            orientation = vertical
-            shade_start = 1.03
-            shade_end = 0.95
+            fill_style = plain
         }
     }
 }
@@ -279,6 +277,12 @@ style "treeview-header" = "default"
 
     bg[NORMAL]        = shade (1.15, @bg_color)
     bg[PRELIGHT]      = shade (1.10, @bg_color)
+
+    engine "xfce"
+    {
+        flat_border = true
+        smooth_edge = false
+    }
 }
 
 style "notebook" = "default"
@@ -290,12 +294,18 @@ style "notebook" = "default"
     bg[NORMAL]        = shade (1.07, @bg_color)
     fg[ACTIVE]        = shade (0.55, @bg_color)
     fg[NORMAL]        = @fg_color
+
+    engine "xfce"
+    {
+        flat_border = true
+        smooth_edge = false
+    }
 }
 
 style "scrollbar" = "default"
 {
-    xthickness = 0
-    ythickness = 0
+    xthickness = 1
+    ythickness = 1
 
     bg[ACTIVE]        = shade (1.1, @bg_color)
     bg[NORMAL]        = shade (0.8, @bg_color)
@@ -303,6 +313,7 @@ style "scrollbar" = "default"
 
     engine "xfce"
     {
+        flat_border = true
         smooth_edge = true
         grip_style = none
     }
@@ -310,11 +321,9 @@ style "scrollbar" = "default"
 
 style "scale" = "scrollbar"
 {
-    xthickness = 0
-    ythickness = 0
-
     engine "xfce"
     {
+        flat_border = true
         smooth_edge = true
         grip_style = none
         boxfill
@@ -337,7 +346,8 @@ style "progress" = "default"
 
     engine "xfce"
     {
-        smooth_edge = true
+        flat_border = true
+        smooth_edge = false
         grip_style = none
         boxfill
         {
@@ -493,3 +503,4 @@ class "MetaFrames"                 style "titlebar"
 widget_class "MetaFrames"          style "titlebar"
 
 widget "*Xfce*Panel*"			style "panel"
+widget "*Xfce*Panel*GtkEntry"		style:highest "default"
