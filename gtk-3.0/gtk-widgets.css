@@ -3,7 +3,6 @@
 
 /* default */
 * {
-    engine: xfce;
     background-clip: padding-box;
 
     -GtkArrow-arrow-scaling: 0.6;
@@ -139,7 +138,7 @@ GtkClutterOffscreen {
  ******************/
 /* transitions */
 .button {
-    transition: background 150ms ease-in-out;
+    transition: none;
 }
 
 .entry {
@@ -228,7 +227,7 @@ GtkAssistant .sidebar {
     border-right-color: shade(@theme_bg_color, 0.72);
     border-left-color: shade(@theme_bg_color, 0.72);
     border-bottom-color: shade(@theme_bg_color, 0.7);
-    border-radius: 3px;
+    border-radius: 2px;
     background-image: linear-gradient(to bottom,
                                       shade(shade(@theme_bg_color, 1.02), 1.05),
                                       shade(shade(@theme_bg_color, 1.02), 0.97)
@@ -333,6 +332,7 @@ GtkAssistant .sidebar {
     color: @theme_text_color;
     background-color: @theme_base_color;
     border-color: darker(@theme_bg_color);
+    engine: xfce;
 }
 
 .check:insensitive,
@@ -382,6 +382,7 @@ GtkAssistant .sidebar {
 .radio,
 .radio row:selected,
 .radio row:selected:focus {
+    engine: xfce;
 }
 
 .radio:insensitive,
@@ -417,6 +418,11 @@ GtkAssistant .sidebar {
 .radio:inconsistent:insensitive,
 .radio row:selected:inconsistent:insensitive,
 .radio row:selected:focus:inconsistent:insensitive {
+}
+
+.menuitem.check,
+.menuitem.radio {
+    engine: xfce;
 }
 
 .menuitem.check:active {
