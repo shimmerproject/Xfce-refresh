@@ -324,8 +324,8 @@ style "scrollbar" = "default"
     xthickness = 1
     ythickness = 1
 
-    bg[ACTIVE]        = shade (1.1, @bg_color)
-    bg[NORMAL]        = shade (0.8, @bg_color)
+    bg[ACTIVE]        = shade (1.15, @bg_color)
+    bg[NORMAL]        = shade (0.9, @bg_color)
     bg[PRELIGHT]      = shade (0.67, @bg_color)
 
     engine "xfce"
@@ -343,10 +343,6 @@ style "scale" = "scrollbar"
         flat_border = true
         smooth_edge = true
         grip_style = none
-        boxfill
-        {
-            fill_style = plain
-        }
     }
 }
 
@@ -424,7 +420,7 @@ style "panel" = "default"
     text[SELECTED]    = @base_color
 }
 
-style "titlebar" = "default"
+style "tabwin" = "default"
 {
     Xfwm4TabwinWidget::border-width = 1
     Xfwm4TabwinWidget::border-alpha = 0.6
@@ -432,7 +428,16 @@ style "titlebar" = "default"
     Xfwm4TabwinWidget::listview-icon-size = 16
     Xfwm4TabwinWidget::alpha = 0.8
     Xfwm4TabwinWidget::radius = 10
+}
 
+style "logout" = "default"
+{
+    #bg[NORMAL]   = @bg_color
+    bg[SELECTED] = @bg_color	# Borderline around the dialog
+}
+
+style "titlebar" = "default"
+{
     bg[SELECTED]      = shade (0.3, @selected_bg_color)
     fg[SELECTED]      = @base_color
     bg[INSENSITIVE]   = @bg_color
@@ -512,6 +517,7 @@ widget_class "*.<GtkCList>.<GtkButton>"         style "treeview-header"
 widget_class "*GnmSimpleCanvas*"                style "treeview-header" # Gnumeric treeview-headers
 widget_class "*.<GtkCMCTree>.<GtkButton>"	style "button" # Claws-Mail treeview-headers
 widget_class "*.<GtkCMCList>.<GtkButton>"	style "button" # Claws-Mail treeview-headers
+widget_class "*<GtkNotebook>.<GtkScrolledWindow>.<GtkViewport>*"	style "notebook" # Claws-Mail compose-window workaround
 
 widget_class "*ThunarShortcutsView*"		style "sidebar"
 widget_class "*ThunarTreeView*"			style "sidebar"
@@ -519,9 +525,11 @@ widget_class "*GtkFileChooserWidget.GtkFileChooserDefault.GtkVBox.GtkHPaned.GtkV
 widget_class "*GtkFileChooserWidget.GtkFileChooserDefault.GtkVBox.GtkHPaned.GtkVBox.GtkScrolledWindow.<GtkTreeView>.<GtkButton>"	style "treeview-header"
 
 widget "xfwm"                      style "titlebar"
-widget "xfwm4-tabwin*"             style "titlebar"
+widget "xfwm4-tabwin*"             style "tabwin"
 class "MetaFrames"                 style "titlebar"
 widget_class "MetaFrames"          style "titlebar"
+widget_class "*XfsmLogoutDialog*"  style "logout"
+widget_class "*XfsmLogoutDialog*GtkButton"  style "button"
 
-widget "*Xfce*Panel*"			style "panel"
-widget "*Xfce*Panel*GtkEntry"		style:highest "default"
+widget "*Xfce*Panel*"              style "panel"
+widget "*Xfce*Panel*GtkEntry"      style:highest "default"
