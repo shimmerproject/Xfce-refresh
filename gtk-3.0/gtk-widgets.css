@@ -216,7 +216,9 @@ GtkAssistant .sidebar {
 .button:hover:focus,
 .button:active:focus,
 .button:active:hover:focus {
-    border-color: shade(@theme_selected_bg_color, 0.8);
+    border-color: shade(@theme_bg_color, 0.4);
+    box-shadow: inset 1px 1px shade(@theme_bg_color, 0.8),
+                inset -1px -1px shade(@theme_bg_color, 0.8);
 }
 
 .button:insensitive {
