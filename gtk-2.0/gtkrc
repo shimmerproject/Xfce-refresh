@@ -510,6 +510,8 @@ widget_class "*.<GtkCTree>.<GtkButton>"         style "treeview-header"
 widget_class "*.<GtkList>.<GtkButton>"          style "treeview-header"
 widget_class "*.<GtkCList>.<GtkButton>"         style "treeview-header"
 widget_class "*GnmSimpleCanvas*"                style "treeview-header" # Gnumeric treeview-headers
+widget_class "*.<GtkCMCTree>.<GtkButton>"	style "button" # Claws-Mail treeview-headers
+widget_class "*.<GtkCMCList>.<GtkButton>"	style "button" # Claws-Mail treeview-headers
 
 widget_class "*ThunarShortcutsView*"		style "sidebar"
 widget_class "*ThunarTreeView*"			style "sidebar"
