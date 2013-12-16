@@ -651,7 +651,7 @@ GtkComboBox.combobox-entry .button:insensitive {
     padding: 3px;
     border-width: 1px;
     border-style: solid;
-    border-color: shade(@theme_bg_color, 0.6);
+    border-color: shade(@theme_bg_color, 0.7);
     border-radius: 0px;
     background-image: linear-gradient(to bottom,
                                       shade(@theme_base_color, 0.99),
@@ -675,7 +675,7 @@ GtkComboBox.combobox-entry .button:insensitive {
 
 .entry:insensitive {
     border-color: shade(@theme_bg_color, 0.8);
-    background-color: alpha(@theme_base_color, 0.6);
+    background-color: @theme_bg_color, 0.6;
     background-image: none;
     color: mix(@theme_text_color, @theme_base_color, 0.4);
 }
