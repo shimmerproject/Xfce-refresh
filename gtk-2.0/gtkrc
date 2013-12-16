@@ -338,6 +338,8 @@ style "scrollbar" = "default"
 
 style "scale" = "scrollbar"
 {
+    bg[NORMAL]        = shade (0.8, @bg_color)
+
     engine "xfce"
     {
         flat_border = true
