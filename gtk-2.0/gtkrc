@@ -140,7 +140,7 @@ style "gradient" = "default"
 {
     engine "xfce"
     {
-        smooth_edge = true
+        flat_border = true
         grip_style = none
         boxfill
         {
@@ -302,6 +302,23 @@ style "notebook" = "default"
     }
 }
 
+style "scrolledwindow" = "default"
+{
+    xthickness = 1
+    ythickness = 1
+
+    engine "xfce"
+    {
+        flat_border = true
+        smooth_edge = false
+        grip_style = none
+        boxfill
+        {
+            fill_style = plain
+        }
+    }
+}
+
 style "scrollbar" = "default"
 {
     xthickness = 1
@@ -314,7 +331,7 @@ style "scrollbar" = "default"
     engine "xfce"
     {
         flat_border = true
-        smooth_edge = true
+        smooth_edge = false
         grip_style = none
     }
 }
@@ -465,6 +482,8 @@ class "*OptionMenu*"               style "button"
 widget_class "*.GtkNotebook"       style "notebook"
 class "*.GtkNotebook"              style "notebook"
 widget_class "*.GtkNotebook*GtkLabel" style "notebook"
+
+widget_class "*GtkScrolledWindow*"  style "scrolledwindow"
 
 widget_class "*GtkVScrollbar*"     style "scrollbar"
 class "*GtkVScrollbar*"            style "scrollbar"
