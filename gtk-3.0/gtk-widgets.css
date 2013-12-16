@@ -150,40 +150,6 @@ GtkClutterOffscreen {
     transition: all 150ms ease-in;
 }
 
-/* inset shadows */
-.button,
-.primary-toolbar .raised .button,
-.primary-toolbar .raised.button,
-.toolbar .button,
-.header-bar .button,
-GtkSwitch.slider {
-    box-shadow: inset 1px 1px alpha(@light_shadow, 0.4),
-                inset -1px 0 alpha(@light_shadow, 0.4);
-}
-
-.button.default {
-    box-shadow: inset 1px 1px alpha(@light_shadow, 0.2),
-                inset -1px 0 alpha(@light_shadow, 0.2);
-}
-
-.button:active,
-.primary-toolbar .button:active,
-.toolbar .button:active,
-.header-bar .button:active {
-    box-shadow: inset 1px 1px alpha(@dark_shadow, 0.06),
-                inset -1px -1px alpha(@dark_shadow, 0.06);
-}
-
-.button:insensitive,
-.primary-toolbar .raised .button:insensitive,
-.primary-toolbar .raised.button:insensitive,
-.toolbar .button:insensitive,
-.header-bar .button:insensitive,
-GtkSwitch.slider:insensitive {
-    box-shadow: inset 1px 1px alpha(@light_shadow, 0.2),
-                inset -1px 0 alpha(@light_shadow, 0.2);
-}
-
 .entry {
     box-shadow: inset 1px 1px alpha(@dark_shadow, 0.1);
 }
@@ -218,13 +184,13 @@ GtkAssistant .sidebar {
  * button *
  **********/
 .button {
-    -GtkWidget-focus-padding: 1;
+    -GtkWidget-focus-padding: 0;
     -GtkWidget-focus-line-width: 0;
 
     padding: 2px 4px;
     border-width: 1px;
     border-style: solid;
-    border-color: shade(@theme_bg_color, 0.8);
+    border-color: shade(@theme_bg_color, 0.7);
     border-radius: 0;
     background-color: shade(@theme_bg_color, 1.1);
 
@@ -232,17 +198,17 @@ GtkAssistant .sidebar {
 }
 
 .button:hover {
-    border-color: shade(@theme_bg_color, 0.8);
+    border-color: shade(@theme_bg_color, 0.6);
     background-color: shade(@theme_bg_color, 0.9);
 }
 
 .button:active {
-    border-color: shade(@theme_bg_color, 0.8);
+    border-color: shade(@theme_bg_color, 0.6);
     background-color: shade(@theme_bg_color, 0.9);
 }
 
 .button:active:hover {
-    border-color: shade(@theme_bg_color, 0.8);
+    border-color: shade(@theme_bg_color, 0.6);
     background-color: shade(@theme_bg_color, 0.9);
 }
 
@@ -254,13 +220,14 @@ GtkAssistant .sidebar {
 }
 
 .button:insensitive {
-    border-color: shade(@theme_bg_color, 0.8);
-    background-color: shade(@theme_bg_color, 0.95), 1.05);
+    border-color: shade(@theme_bg_color, 0.7);
+    
+    text-shadow: 0 1px shade(@theme_bg_color, 1.2);
 }
 
 .button:active *:insensitive {
-    border-color: shade(@theme_bg_color, 0.8);
-    background-color: shade(@theme_bg_color, 0.95), 1.05);
+    border-color: shade(@theme_bg_color, 0.7);
+    background-color: shade(@theme_bg_color, 0.95);
 }
 
 /* default button */
@@ -446,10 +413,12 @@ GtkIconView.content-view.cell.check:active {
  * pane separator *
  ******************/
 .pane-separator.horizontal {
+    engine: xfce;
      -xfce-grip-style: rough;
 }
 
 .pane-separator.vertical {
+    engine: xfce;
      -xfce-grip-style: rough;
 }
 
@@ -473,10 +442,7 @@ row:selected:focus {
     border-width: 1px 0;
     border-style: solid;
     border-color: shade(@theme_selected_bg_color, 0.8);
-    background-image: linear-gradient(to bottom,
-                                      shade(@theme_selected_bg_color, 1.2),
-                                      shade(@theme_selected_bg_color, 1.0)
-                                      );
+    background-color: @theme_selected_bg_color;
 
     color: @theme_selected_fg_color;
 
@@ -683,10 +649,7 @@ GtkComboBox.combobox-entry .button:insensitive {
     padding: 3px;
     border-width: 1px;
     border-style: solid;
-    border-top-color: shade(@theme_bg_color, 0.6);
-    border-right-color: shade(@theme_bg_color, 0.7);
-    border-left-color: shade(@theme_bg_color, 0.7);
-    border-bottom-color: shade(@theme_bg_color, 0.72);
+    border-color: shade(@theme_bg_color, 0.6);
     border-radius: 0px;
     background-image: linear-gradient(to bottom,
                                       shade(@theme_base_color, 0.99),
