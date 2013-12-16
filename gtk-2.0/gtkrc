@@ -241,7 +241,7 @@ style "pager" = "gradient"
 
 style "button" = "default"
 {
-    xthickness = 3
+    xthickness = 2
     ythickness = 2
 
     bg[ACTIVE]        = shade (0.9, @bg_color)
