@@ -46,7 +46,7 @@
     -GtkToolButton-icon-spacing: 6;
     -GtkToolItemGroup-expander-size: 11;
     -GtkTreeView-expander-size: 11;
-    -GtkWidget-focus-line-width: 1;
+    -GtkWidget-focus-line-width: 0;
     -GtkWidget-focus-padding: 0;
     -GtkWidget-interior-focus: false;
     -GtkWidget-link-color: @link_color;
@@ -58,9 +58,6 @@
     outline-color: alpha(@theme_fg_color, 0.3);
     outline-style: dashed;
     outline-offset: 2px;
-
-    -xfce-smooth-edge: true;
-    -xfce-grip-style: disabled;
 }
 
 /***************
@@ -147,10 +144,6 @@ GtkClutterOffscreen {
 
 .entry:focus {
     transition: all 150ms ease-in;
-}
-
-.entry {
-    box-shadow: inset 1px 1px alpha(@dark_shadow, 0.1);
 }
 
 /* disable box shadow */
