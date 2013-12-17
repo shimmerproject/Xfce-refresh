@@ -96,7 +96,6 @@ GtkClutterOffscreen {
 
 *:insensitive,
 *:insensitive:insensitive {
-    background-color: @theme_bg_color;
     color: mix(@theme_fg_color, @theme_bg_color, 0.4);
 }
 
@@ -223,7 +222,7 @@ GtkAssistant .sidebar {
 
 .button:insensitive {
     border-color: shade(@theme_bg_color, 0.7);
-    
+    background-color: @theme_bg_color;
     text-shadow: 0 1px shade(@theme_bg_color, 1.2);
 }
 
@@ -675,7 +674,7 @@ GtkComboBox.combobox-entry .button:insensitive {
 
 .entry:insensitive {
     border-color: shade(@theme_bg_color, 0.8);
-    background-color: @theme_bg_color, 0.6;
+    background-color: @theme_bg_color;
     background-image: none;
     color: mix(@theme_text_color, @theme_base_color, 0.4);
 }
