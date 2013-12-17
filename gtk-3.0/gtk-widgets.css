@@ -264,149 +264,11 @@ GtkAssistant .sidebar {
                                       );
 }
 
-/*******************
- * check and radio *
- *******************/
-/* draw regular check and radio items using our assets */
-.check,
-.check row:selected,
-.check row:selected:focus {
-    color: @theme_text_color;
-    background-color: @theme_base_color;
-    border-color: darker(@theme_bg_color);
-    engine: xfce;
-}
-
-.check:insensitive,
-.check row:selected:insensitive,
-.check row:selected:focus:insensitive {
-    color: @text_insensitive;
-    background-color: @base_insensitive;
-    border-color: darker(@bg_insensitive);
-}
-
-.check:active,
-.check row:selected:active,
-.check row:selected:focus:active {
-    color: @theme_text_color;
-    background-color: @theme_base_color;
-    border-color: darker(@theme_bg_color);
-}
-
-.check:active:hover,
-.check row:selected:active:hover,
-.check row:selected:focus:active:hover {
-    color: @text_prelight;
-    background-color: @base_prelight;
-    border-color: darker(@bg_prelight);
-}
-
-.check:active:insensitive,
-.check row:selected:active:insensitive,
-.check row:selected:focus:active:insensitive {
-}
-
-.check:inconsistent,
-.check row:selected:inconsistent,
-.check row:selected:focus:inconsistent {
-}
-
-.check:inconsistent:hover,
-.check row:selected:inconsistent:hover,
-.check row:selected:focus:inconsistent:hover {
-}
-
-.check:inconsistent:insensitive,
-.check row:selected:inconsistent:insensitive,
-.check row:selected:focus:inconsistent:insensitive {
-}
-
-.radio,
-.radio row:selected,
-.radio row:selected:focus {
-    engine: xfce;
-}
-
-.radio:insensitive,
-.radio row:selected:insensitive,
-.radio row:selected:focus:insensitive {
-}
-
-.radio:active,
-.radio row:selected:active,
-.radio row:selected:focus:active {
-}
-
-.radio:active:hover,
-.radio row:selected:active:hover,
-.radio row:selected:focus:active:hover {
-}
-
-.radio:active:insensitive,
-.radio row:selected:active:insensitive,
-.radio row:selected:focus:active:insensitive {
-}
-
-.radio:inconsistent,
-.radio row:selected:inconsistent,
-.radio row:selected:focus:inconsistent {
-}
-
-.radio:inconsistent:hover,
-.radio row:selected:inconsistent:hover,
-.radio row:selected:focus:inconsistent:hover {
-}
-
-.radio:inconsistent:insensitive,
-.radio row:selected:inconsistent:insensitive,
-.radio row:selected:focus:inconsistent:insensitive {
-}
-
-.menuitem.check,
-.menuitem.radio {
-    engine: xfce;
-}
-
-.menuitem.check:active {
-}
-
-.menuitem.check:active:hover {
-}
-
-.menuitem.check:active:insensitive {
-}
-
-.menuitem.check:inconsistent:hover,
-.menuitem.radio:inconsistent:hover {
-}
-
-.menuitem.check:inconsistent,
-.menuitem.radio:inconsistent {
-}
-
-.menuitem.check:inconsistent:insensitive,
-.menuitem.radio:inconsistent:insensitive {
-}
-
-.menuitem.radio:active {
-}
-
-.menuitem.radio:active:hover {
-}
-
-.menuitem.radio:active:insensitive {
-}
-
-GtkIconView.content-view.cell.check {
-}
-
-GtkIconView.content-view.cell.check:active {
-}
-
 /***************
  * resize grip *
  ***************/
 .grip {
+     engine: xfce;
      -xfce-grip-style: rough;
 }
 
@@ -455,17 +317,167 @@ row:selected:focus {
  * check and radio *
  *******************/
 .check,
-.radio,
+.check row:selected,
+.check row:selected:focus,
+.check row:hover {
+    engine: xfce;
+    background-color: @theme_base_color;
+    border-color: darker(@theme_bg_color);
+    color: @theme_text_color;
+}
+
 .check:insensitive,
-.radio:insensitive {
-    border-style: none;
-    background-color: transparent;
+.check row:selected:insensitive,
+.check row:selected:focus:insensitive {
+    background-color: @theme_bg_color;
+    border-color: darker(@theme_bg_color);
+}
+
+.check:active,
+.check row:selected:active,
+.check row:selected:focus:active {
+    background-color: @theme_base_color;
+    border-color: darker(@theme_bg_color);
+    color: @theme_text_color;
+}
+
+.check:active:hover,
+.check row:selected:active:hover,
+.check row:selected:focus:active:hover {
+    background-color: @theme_base_color;
+    border-color: darker(@theme_bg_color);
+    color: @theme_text_color;
+}
+
+.check:active:insensitive,
+.check row:selected:active:insensitive,
+.check row:selected:focus:active:insensitive {
+    background-color: @theme_bg_color;
+    border-color: darker(@theme_bg_color);
+    color: mix(@theme_fg_color, @theme_bg_color, 0.4);
+}
+
+.check:inconsistent,
+.check row:selected:inconsistent,
+.check row:selected:focus:inconsistent {
+}
+
+.check:inconsistent:hover,
+.check row:selected:inconsistent:hover,
+.check row:selected:focus:inconsistent:hover {
+}
+
+.check:inconsistent:insensitive,
+.check row:selected:inconsistent:insensitive,
+.check row:selected:focus:inconsistent:insensitive {
+}
+
+.radio,
+.radio row:selected,
+.radio row:selected:focus {
+    engine: xfce;
+    background-color: @theme_base_color;
+    border-color: darker(@theme_bg_color);
+    color: @theme_text_color;
+}
+
+.radio:insensitive,
+.radio row:selected:insensitive,
+.radio row:selected:focus:insensitive {
+    background-color: @theme_bg_color;
+    border-color: darker(@theme_bg_color);
+}
+
+.radio:active,
+.radio row:selected:active,
+.radio row:selected:focus:active {
+    background-color: @theme_base_color;
+    border-color: darker(@theme_bg_color);
+    color: @theme_text_color;
+}
+
+.radio:active:hover,
+.radio row:selected:active:hover,
+.radio row:selected:focus:active:hover {
+    background-color: @theme_base_color;
+    border-color: darker(@theme_bg_color);
+    color: @theme_text_color;
+}
+
+.radio:active:insensitive,
+.radio row:selected:active:insensitive,
+.radio row:selected:focus:active:insensitive {
+    background-color: @theme_bg_color;
+    border-color: darker(@theme_bg_color);
+    color: mix(@theme_fg_color, @theme_bg_color, 0.4);
+}
+
+.radio:inconsistent,
+.radio row:selected:inconsistent,
+.radio row:selected:focus:inconsistent {
+}
+
+.radio:inconsistent:hover,
+.radio row:selected:inconsistent:hover,
+.radio row:selected:focus:inconsistent:hover {
+}
+
+.radio:inconsistent:insensitive,
+.radio row:selected:inconsistent:insensitive,
+.radio row:selected:focus:inconsistent:insensitive {
+}
+
+.menuitem.check,
+.menuitem.radio {
+    border-color: darker(@theme_bg_color);
+    engine: xfce;
+}
+
+.menuitem.check:active {
+    border-color: darker(@theme_bg_color);
+}
+
+.menuitem.check:active:hover {
+    border-color: darker(@theme_bg_color);
+}
+
+.menuitem.check:active:insensitive {
+}
+
+.menuitem.check:inconsistent:hover,
+.menuitem.radio:inconsistent:hover {
+}
+
+.menuitem.check:inconsistent,
+.menuitem.radio:inconsistent {
+}
+
+.menuitem.check:inconsistent:insensitive,
+.menuitem.radio:inconsistent:insensitive {
+}
+
+.menuitem.radio:active {
+    border-color: darker(@theme_bg_color);
+}
+
+.menuitem.radio:active:hover {
+    border-color: darker(@theme_bg_color);
+}
+
+.menuitem.radio:active:insensitive {
+}
+
+GtkIconView.content-view.cell.check {
+}
+
+GtkIconView.content-view.cell.check:active {
 }
 
 GtkCheckButton:hover,
 GtkCheckButton:active:hover,
 GtkCheckButton:selected,
 GtkCheckButton:selected:focus {
+    /* FIXME: don't change the check's inner bg-color on hover */
     background-color: shade(@theme_bg_color, 1.05);
 }
 
@@ -1289,15 +1301,17 @@ GtkTreeMenu .menuitem {
 .menuitem.radio:hover,
 .menuitem.check:insensitive,
 .menuitem.radio:insensitive {
-    border-style: none;
+    border-color: darker(@theme_bg_color);
     background-color: transparent;
     background-image: none;
+    engine: xfce;
 }
 
 .menuitem.check:active,
 .menuitem.radio:active {
-    border-style: none;
+    border-color: darker(@theme_bg_color);
     background-color: transparent;
+    engine: xfce;
 }
 
 .menuitem.arrow {
