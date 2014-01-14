@@ -8,8 +8,8 @@
 # Simon Steinbeiß <simon@xfce.org>
 # Released under the GPL license
 
-gtk-color-scheme	= "bg_color:#d9dadb\nselected_bg_color:#8fafdb\nbase_color:#fcfcfc" # Background, base.
-gtk-color-scheme	= "fg_color:#2D2D2D\nselected_fg_color:#000000\ntext_color:#2D2D2D" # Foreground, text. 
+gtk-color-scheme	= "bg_color:#d9dadb\nselected_bg_color:#1e9cc8\nbase_color:#fcfcfc" # Background, base.
+gtk-color-scheme	= "fg_color:#2D2D2D\nselected_fg_color:#EEEEEE\ntext_color:#2D2D2D" # Foreground, text. 
 gtk-color-scheme	= "tooltip_bg_color:#ffffdf\ntooltip_fg_color:#2D2D2D" # Tooltips.
 gtk-color-scheme	= "link_color:#5177ac" # Hyperlinks
 gtk-color-scheme	= "panel_bg:#252525" # Panel bg color
@@ -82,6 +82,9 @@ style "default"
 
     GtkScrolledWindow::scrollbars-within-bevel	 = 1
     GtkScrolledWindow::scrollbar_spacing         = 0
+    GtkScrolledWindow::shadow-type               = GTK_SHADOW_NONE
+    GtkScrolledWindow::draw_border               = { 0, 0, 0, 0 }
+    GtkScrolledWindow::focus-line-width          = 0
     
     GtkStatusbar::shadow-type                    = GTK_SHADOW_NONE
 
@@ -116,19 +119,20 @@ style "default"
     fg[INSENSITIVE]   = shade (0.7, @bg_color)
     fg[NORMAL]        = @fg_color
     fg[PRELIGHT]      = @fg_color
-    fg[SELECTED]      = shade (0.7, @fg_color)
+    fg[SELECTED]      = @selected_fg_color
 
     text[ACTIVE]      = @text_color
     text[INSENSITIVE] = shade (0.7, @bg_color)
     text[NORMAL]      = @text_color
     text[PRELIGHT]    = @text_color
-    text[SELECTED]    = shade (0.7, @text_color)
+    text[SELECTED]    = @selected_fg_color
 
     engine "xfce"
     {
         smooth_edge = true
         grip_style = none
         flat_border = true
+        focus_color = shade (0.8, @selected_bg_color)
         boxfill
         {
             fill_style = plain
@@ -140,8 +144,10 @@ style "gradient" = "default"
 {
     engine "xfce"
     {
+        smooth_edge = true
         flat_border = true
         grip_style = none
+        focus_color = shade (0.8, @selected_bg_color)
         boxfill
         {
             fill_style = gradient
@@ -149,6 +155,19 @@ style "gradient" = "default"
             shade_start = 1.10
             shade_end = 0.90
         }
+    }
+}
+
+style "text" = "default"
+{
+    xthickness = 0
+    ythickness = 0
+    engine "xfce"
+    {
+        smooth_edge = false
+        flat_border = true
+        grip_style = none
+        focus_color = @bg_color
     }
 }
 
@@ -161,7 +180,7 @@ style "menu" = "default"
     bg[INSENSITIVE]   = @base_color
     bg[NORMAL]        = @base_color
     fg[ACTIVE]        = @fg_color
-    fg[PRELIGHT]      = @fg_color
+    fg[PRELIGHT]      = @selected_fg_color
     fg[SELECTED]      = @fg_color
     text[PRELIGHT]    = @text_color
 }
@@ -205,9 +224,6 @@ style "menubar" = "menu"
 
 style "toolbar" = "menubar"
 {
-    xthickness = 0
-    ythickness = 0
-
     bg[NORMAL]        = shade(0.9, @bg_color)
 
     engine "xfce"
@@ -255,8 +271,9 @@ style "button" = "default"
     engine "xfce"
     {
         flat_border = true
-        smooth_edge = false
+        smooth_edge = true
         grip_style = none
+        focus_color = shade (0.8, @selected_bg_color)
         boxfill
         {
             fill_style = plain
@@ -290,9 +307,9 @@ style "notebook" = "default"
     xthickness = 2
     ythickness = 2
 
-    bg[ACTIVE]        = @bg_color
-    bg[NORMAL]        = shade (1.07, @bg_color)
-    fg[ACTIVE]        = shade (0.55, @bg_color)
+    bg[ACTIVE]        = shade (0.97, @bg_color)
+    bg[NORMAL]        = shade (1.0, @bg_color)
+    fg[ACTIVE]        = shade (0.6, @bg_color)
     fg[NORMAL]        = @fg_color
 
     engine "xfce"
@@ -408,7 +425,7 @@ style "panel" = "default"
     
     bg[ACTIVE]        = shade (1.6, @panel_bg)
     bg[NORMAL]        = @panel_bg
-    bg[PRELIGHT]      = mix (0.8, shade (1.2, @panel_bg), @selected_bg_color)
+    bg[PRELIGHT]      = shade (0.88, @selected_bg_color)
     bg[SELECTED]      = shade (1.6, @panel_bg)
 
     fg[ACTIVE]        = @base_color
@@ -420,21 +437,36 @@ style "panel" = "default"
     text[NORMAL]      = @base_color
     text[PRELIGHT]    = @base_color
     text[SELECTED]    = @base_color
+    
+    engine "xfce"
+    {
+        flat_border = true
+        smooth_edge = false
+    }
 }
 
-style "tabwin" = "default"
+style "tabwin" = "panel"
 {
+    GtkWidget::focus-line-width                  = 0
     Xfwm4TabwinWidget::border-width = 1
-    Xfwm4TabwinWidget::border-alpha = 0.6
+    Xfwm4TabwinWidget::border-alpha = 1.0
     Xfwm4TabwinWidget::icon-size = 64
     Xfwm4TabwinWidget::listview-icon-size = 16
-    Xfwm4TabwinWidget::alpha = 0.8
-    Xfwm4TabwinWidget::radius = 10
+    Xfwm4TabwinWidget::alpha = 1.0
+    Xfwm4TabwinWidget::border-radius = 5
+    
+    bg[NORMAL]        = shade (1.6, @panel_bg)
+    bg[SELECTED]      = shade (0.5, @bg_color)
+
+    engine "xfce"
+    {
+        flat_border = true
+        smooth_edge = false
+    }
 }
 
 style "logout" = "default"
 {
-    #bg[NORMAL]   = @bg_color
     bg[SELECTED] = @bg_color	# Borderline around the dialog
 }
 
@@ -448,20 +480,20 @@ style "titlebar" = "default"
 
 widget_class "*"                   style "default"
 
-widget_class "*GtkTree*"           style "gradient"
-class "*GtkTree*"                  style "gradient"
-widget_class "*GtkCTree*"          style "gradient"
-class "*GtkCTree*"                 style "gradient"
-widget_class "*GtkList*"           style "gradient"
-class "*GtkList*"                  style "gradient"
-widget_class "*GtkCList*"          style "gradient"
-class "*GtkCList*"                 style "gradient"
-widget_class "*Entry*"             style "gradient"
-class "*Entry*"                    style "gradient"
-widget_class "*Text*"              style "gradient"
-class "*Text*"                     style "gradient"
-widget_class "*Pager*"             style "pager"
-class "*Pager*"                    style "pager"
+#widget_class "*GtkTree*"           style "gradient"
+#class "*GtkTree*"                  style "gradient"
+#widget_class "*GtkCTree*"          style "gradient"
+#class "*GtkCTree*"                 style "gradient"
+#widget_class "*GtkList*"           style "gradient"
+#class "*GtkList*"                  style "gradient"
+#widget_class "*GtkCList*"          style "gradient"
+#class "*GtkCList*"                 style "gradient"
+#widget_class "*Entry*"             style "gradient"
+#class "*Entry*"                    style "gradient"
+#widget_class "*Text*"              style "text"
+#class "*Text*"                     style "text"
+#widget_class "*Pager*"             style "pager"
+#class "*Pager*"                    style "pager"
 
 widget_class "*Menu*"              style "menu"
 #class "*Menu*"                     style "menu"
@@ -527,11 +559,11 @@ widget_class "*GtkFileChooserWidget.GtkFileChooserDefault.GtkVBox.GtkHPaned.GtkV
 widget_class "*GtkFileChooserWidget.GtkFileChooserDefault.GtkVBox.GtkHPaned.GtkVBox.GtkScrolledWindow.<GtkTreeView>.<GtkButton>"	style "treeview-header"
 
 widget "xfwm"                      style "titlebar"
-widget "xfwm4-tabwin*"             style "tabwin"
 class "MetaFrames"                 style "titlebar"
 widget_class "MetaFrames"          style "titlebar"
 widget_class "*XfsmLogoutDialog*"  style "logout"
 widget_class "*XfsmLogoutDialog*GtkButton"  style "button"
+widget "xfwm4-tabwin*"             style "tabwin"
 
 widget "*Xfce*Panel*"              style "panel"
 widget "*Xfce*Panel*GtkEntry"      style:highest "default"

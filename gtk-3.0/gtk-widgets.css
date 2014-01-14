@@ -13,8 +13,8 @@
     -GtkButton-image-spacing: 0;
     -GtkButton-inner-border: 1;
     -GtkButton-interior-focus: true;
-    -GtkButtonBox-child-internal-pad-x: 0;
-    -GtkButtonBox-child-internal-pad-y: 0;
+    -GtkButtonBox-child-internal-pad-x: 6;
+    -GtkButtonBox-child-internal-pad-y: 3;
     -GtkButtonBox-child-min-height: 0;
     -GtkButtonBox-child-min-width: 0;
     -GtkCheckButton-indicator-size: 12;
@@ -183,7 +183,7 @@ GtkAssistant .sidebar {
     border-width: 1px;
     border-style: solid;
     border-color: shade(@theme_bg_color, 0.7);
-    border-radius: 0;
+    border-radius: 2px;
     background-color: shade(@theme_bg_color, 1.1);
 
     color: @theme_fg_color;
@@ -209,8 +209,6 @@ GtkAssistant .sidebar {
 .button:active:focus,
 .button:active:hover:focus {
     border-color: shade(@theme_bg_color, 0.4);
-    box-shadow: inset 1px 1px shade(@theme_bg_color, 0.8),
-                inset -1px -1px shade(@theme_bg_color, 0.8);
 }
 
 .button:insensitive {
@@ -656,7 +654,7 @@ GtkComboBox.combobox-entry .button:insensitive {
     border-width: 1px;
     border-style: solid;
     border-color: shade(@theme_bg_color, 0.7);
-    border-radius: 0px;
+    border-radius: 2px;
     background-image: linear-gradient(to bottom,
                                       shade(@theme_base_color, 0.99),
                                       @theme_base_color
