@@ -517,6 +517,8 @@ widget_class "*button*"            style "button"
 class "*button*"                   style "button"
 widget_class "*OptionMenu*"        style "button"
 class "*OptionMenu*"               style "button"
+widget_class "*GtkButtonBox*"      style:highest "default"
+class "*GtkButtonBox*"             style:highest "default"
 
 widget_class "*.GtkNotebook"       style "notebook"
 class "*.GtkNotebook"              style "notebook"
